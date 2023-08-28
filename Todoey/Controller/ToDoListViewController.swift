@@ -11,7 +11,7 @@ import UIKit
 class ToDoListViewController: UITableViewController {
     
     @IBOutlet weak var addAnItem: UIBarButtonItem!
-    var itemArray = ["Find Mike","Buy Eggs", "Destroy Demogorgon","Sample"]
+    var itemArray = [Item]()
     
 //    To store the data we have to use user Defaults
     
@@ -19,12 +19,27 @@ class ToDoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+// Do any additional setup after loading the view.
         
 //        Calling stored user defaults to load the existing data
-        if let items = defaults.array(forKey: "ToDoListArray") as? [String]{
-            itemArray = items
-        }
+//        if let items = defaults.array(forKey: "ToDoListArray") as? [String]{
+//            itemArray = items
+//        }
+        
+//        Add Items to Class
+        let newItem = Item()
+        newItem.title = "Find Mike"
+        itemArray.append(newItem)
+        
+        let newItem1 = Item()
+        newItem1.title = "Buy Eggos"
+        itemArray.append(newItem1)
+        
+        let newItem2 = Item()
+        newItem2.title = "Destroy Demogorgon"
+        itemArray.append(newItem2)
+        
+        
     }
 
 // MARK Table View Datasource Method
@@ -36,7 +51,7 @@ class ToDoListViewController: UITableViewController {
 //    To add the values to table view cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        cell.textLabel?.text = itemArray [indexPath.row]
+        cell.textLabel?.text = itemArray [indexPath.row].title
         
         return cell
     }
@@ -70,8 +85,11 @@ class ToDoListViewController: UITableViewController {
 //            What will happen once user clicks Add Item Button on UI Alert
 //            print("Add Item Pressed\(textField.text)")
             
+        let newItem = Item()
+            newItem.title = textField.text!
+            
 //            Add the item to array
-            self . itemArray.append(textField.text!)
+            self . itemArray.append(newItem)
             
 //            Storing the new updated list to device using user defaults
             self.defaults.setValue(self.itemArray, forKey: "ToDoListArray")

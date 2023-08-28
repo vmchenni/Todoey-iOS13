@@ -53,6 +53,11 @@ class ToDoListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         cell.textLabel?.text = itemArray [indexPath.row].title
         
+        if (itemArray[indexPath.row].done == true) {
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
         return cell
     }
     
@@ -60,14 +65,15 @@ class ToDoListViewController: UITableViewController {
 //    Click on cell in table view cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        print(itemArray[indexPath.row])
-//        Check if there is a check box
-        if (tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark){
-//  Remove checkbox if exist
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        
+        if(itemArray[indexPath.row].done == true){
+            itemArray[indexPath.row].done = false
         }else{
-//            Add a check box if don't exist
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            itemArray[indexPath.row].done = true
         }
+        
+//        Reloading the table based on new selection
+        tableView.reloadData()
         
 //        Deselecte view cell
         tableView.deselectRow(at: indexPath, animated: true)

@@ -22,30 +22,7 @@ class ToDoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
-        print(dataFilePath)
-// Do any additional setup after loading the view.
-        
-//        Calling stored user defaults to load the existing data
-//        if let items = defaults.array(forKey: "ToDoListArray") as? [String]{
-//            itemArray = items
-//        }
-        
-//        Add Items to Class
-//        let newItem = Item()
-//        newItem.title = "Find Mike"
-//        itemArray.append(newItem)
-//
-//        let newItem1 = Item()
-//        newItem1.title = "Buy Eggos"
-//        itemArray.append(newItem1)
-//
-//        let newItem2 = Item()
-//        newItem2.title = "Destroy Demogorgon"
-//        itemArray.append(newItem2)
-        
+        print(dataFilePath!)
         loadItems()
     }
 

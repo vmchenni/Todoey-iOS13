@@ -61,11 +61,11 @@ class ToDoListViewController: UITableViewController {
             itemArray[indexPath.row].done = true
         }
         
-//        Delete Item from context
-        context.delete(itemArray[indexPath.row])
-        
-//        Remove Item from Item Array
-        itemArray .remove(at: indexPath.row)
+////        Delete Item from context
+//        context.delete(itemArray[indexPath.row])
+//        
+////        Remove Item from Item Array
+//        itemArray .remove(at: indexPath.row)
         
         self.saveItems()
         

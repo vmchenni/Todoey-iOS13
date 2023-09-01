@@ -79,20 +79,17 @@ class ToDoListViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
 //            What will happen once user clicks Add Item Button on UI Alert
-//            print("Add Item Pressed\(textField.text)")
-    
+
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
             newItem.done = false
-//            Add the item to array
-            self . itemArray.append(newItem)
-            
-            self.saveItems()
-            
 
-            
+//          Add the item to array
+            self . itemArray.append(newItem)
+            self.saveItems()
         }
-        alert.addTextField { AlertTextField in
+        
+            alert.addTextField { AlertTextField in
             AlertTextField.placeholder = "Create new item"
             textField = AlertTextField
 //            print(AlertTextField.text!)
